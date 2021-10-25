@@ -14,12 +14,21 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.3.1",
+    "axios": "0.21.4",
+    "firebase": "8.6.8",
     "framer-motion": "^4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-number-format": "^4.7.3",
     "react-query": "^3.27.0",
+    "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-virtualized": "^9.22.3",
+    "sass": "^1.43.3",
+    "swiper": "6.8.1",
+    "toast": "^0.3.47",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
@@ -46,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-virtualized": "^9.21.14"
   }
 }
