@@ -2,7 +2,6 @@
 import { Box, Text, Flex, Image } from "@chakra-ui/react"
 
 //React
-import { AutoSizer, List, ListRowRenderer } from 'react-virtualized';
 import { useInfiniteQuery } from 'react-query';
 import { useState } from 'react';
 
@@ -12,9 +11,6 @@ import { api } from '../services/api';
 //Components
 import { Immobile as Imovel } from '../components/Immobile';
 import { CreateImmobileForm } from '../components/CreateImmobileForm';
-import { Loading } from '../components/Loading';
-import { Error } from '../components/Error';
-
 
 
 type Immobile = {
@@ -61,6 +57,8 @@ export function Admin() {
         })
       }
     );
+
+  console.log(isLoading, isError);
 
 
 

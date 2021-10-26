@@ -29,9 +29,6 @@ import { IoIosBed } from 'react-icons/io';
 import { BiBuildingHouse } from 'react-icons/bi';
 
 
-
-
-
 SwiperCore.use([Navigation, Pagination, Keyboard]);
 
 type SeeImmobileProps = {

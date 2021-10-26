@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 //Components
 import { Header } from '../components/Header';
 import ImmobilePreview from '../components/ImmobilePreview';
@@ -28,13 +29,14 @@ type Immobile = {
 
 export function Properties() {
   const [immobiles, setImmobiles] = useState<Immobile>([]);
+  const [hasImmobiles, setHasImmobiles] = useState(true);
 
-  const [price, setPrice] = useState(1000000);
-  const [size, setSize] = useState(500);
-  const [toilets, setToilets] = useState(3);
-  const [rooms, setRooms] = useState(3);
-  const [suites, setSuites] = useState(3);
-  const [slots, setSlots] = useState(3);
+  const [price, setPrice] = useState(2000000);
+  const [size, setSize] = useState(1000);
+  const [toilets, setToilets] = useState(0);
+  const [rooms, setRooms] = useState(0);
+  const [suites, setSuites] = useState(0);
+  const [slots, setSlots] = useState(0);
 
   const { isLoading, isError } =
     useInfiniteQuery(
@@ -57,17 +59,15 @@ export function Properties() {
         })
       }
     );
-
   return (
     <>
       <Header />
       <Flex w="100vw" mt="20" justify="center" >
-
-        <Box w="20vw" h="700px" >
+        <Box w="20vw" h="700px">
           <Text align="center" fontWeight="medium" color="#00293A" fontSize="40px">Filtro</Text>
-          <Box as="form" w="300px" mt="4" mx="auto" >
+          <Box as="form" w="400px" mt="4" mx="auto" >
             <Text align="left" >Preço</Text>
-            <Slider onChange={(value) => setPrice(value)} min={0} max={2000000} defaultValue={1000000} >
+            <Slider onChange={(value) => setPrice(value)} min={0} max={2000000} defaultValue={2000000} step={1}>
               <SliderTrack>
                 <SliderFilledTrack />
               </SliderTrack>
@@ -78,7 +78,7 @@ export function Properties() {
             </Text>
 
             <Text align="left" >Tamanho</Text>
-            <Slider onChange={(value) => setSize(value)} min={0} max={1000} defaultValue={500}>
+            <Slider onChange={(value) => setSize(value)} min={0} max={1000} defaultValue={1000}>
               <SliderTrack>
                 <SliderFilledTrack />
               </SliderTrack>
@@ -112,8 +112,10 @@ export function Properties() {
         <Box ml="40" h="800px" my="10" >
 
           {immobiles.filter((val) => {
-            if ((val.price <= price) || (val.size <= size))
+            if (val.price <= price && val.size <= size && val.rooms >= rooms) {
               return val;
+            }
+
           }).map((immobile) => {
             return (
               <Box key={immobile.id}>

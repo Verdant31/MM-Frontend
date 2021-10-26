@@ -1,7 +1,9 @@
+//Chakra
+import { Flex } from '@chakra-ui/react';
+
+//Swiper
 import { SwiperSlide } from "swiper/react";
-import { Box, Flex, Link, ResponsiveValue, Text } from '@chakra-ui/react';
-import { Image } from '@chakra-ui/image';
-type BackgroundImage = "none" | (string & {});
+
 
 interface swiperProps {
   image: string;
