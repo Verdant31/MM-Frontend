@@ -7,6 +7,7 @@ import { Flex, Text, HStack, VStack, Icon, Button, Box } from '@chakra-ui/react'
 
 //React
 import { useEffect, useState } from 'react';
+import ReactWhatsapp from 'react-whatsapp';
 
 
 //Services
@@ -27,6 +28,7 @@ import { RiMoneyDollarBoxFill } from 'react-icons/ri';
 import { AiFillCar } from 'react-icons/ai';
 import { IoIosBed } from 'react-icons/io';
 import { BiBuildingHouse } from 'react-icons/bi';
+import NumberFormat from 'react-number-format';
 
 
 SwiperCore.use([Navigation, Pagination, Keyboard]);
@@ -45,11 +47,31 @@ type Immobile = {
   rooms: number;
   suites: number;
   slots: number;
+  street: string;
+  district: string;
+  cep: number;
+  city: string;
 }
 
 export function SeeImmobile() {
   const { id } = useParams<SeeImmobileProps>();
+  const [immobileUrl, setImmobileUrl] = useState('');
   const [currentImmobile, setCurrentImmobile] = useState<Immobile>();
+
+  function sendWhats() {
+    setImmobileUrl(`${process.env.REACT_APP_URL}/verimovel/${id}`)
+    window.open(`https://wa.me/5567999088757/?
+    text=Boa tarde! Estou interessado no seguinte imóvel do site de vocês!
+    ${immobileUrl}
+    `);
+  }
+  function openMap() {
+    if (!currentImmobile) {
+      return;
+    }
+    const stret = encodeURI(currentImmobile.street);
+    window.open(`https://www.google.com/maps/search/${stret}`);
+  }
 
   useEffect(() => {
     api.get(`/getimmobile/${id}`).then((response: any) => {
@@ -64,12 +86,17 @@ export function SeeImmobile() {
         size: data.tamanho,
         slots: data.vagas,
         suites: data.suites,
+        street: data.rua,
+        cep: data.cep,
+        city: data.cidade,
+        district: data.bairro
       })
     }).catch((error) => {
       console.log(error);
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
 
   return (
     <Box mb="40">
@@ -112,7 +139,9 @@ export function SeeImmobile() {
             </HStack>
             <HStack w={80} spacing="0">
               <Icon mt="8" h={28} w={28}><RiMoneyDollarBoxFill /></Icon>
-              <Text fontSize="30px">{currentImmobile?.price} banheiros</Text>
+              <Text fontSize="30px">
+                <NumberFormat value={currentImmobile?.price} displayType={'text'} thousandSeparator={true} prefix={'R$'} />
+              </Text>
             </HStack>
           </HStack>
           <HStack spacing="12">
@@ -130,10 +159,7 @@ export function SeeImmobile() {
             </HStack>
           </HStack>
           <HStack spacing="12">
-            <HStack w={64} spacing="0">
-              <Icon mt="8" h={28} w={28}><RiMoneyDollarBoxFill /></Icon>
-              <Text fontSize="30px">R${currentImmobile?.price}</Text>
-            </HStack>
+
             <HStack w={80} spacing="0">
               <Icon mt="8" h={28} w={28}><BiBuildingHouse /></Icon>
               <Text fontSize="30px">{currentImmobile?.type}</Text>
@@ -142,19 +168,19 @@ export function SeeImmobile() {
           </HStack>
           <VStack w="100%" align="left" pt="4" >
             <HStack >
-              <Text w="50%" fontSize="30px">Rua: Mohamad Hassan Haji 100</Text>
-              <Text w="50%" fontSize="30px">Cidade: Dourados-MS</Text>
+              <Text w="50%" fontSize="30px">Rua: {currentImmobile?.street}</Text>
+              <Text w="50%" fontSize="30px">Cidade: {currentImmobile?.city}</Text>
             </HStack>
             <HStack >
-              <Text w="50%" fontSize="30px">Bairro: Parque Alvorada</Text>
-              <Text w="50%" fontSize="30px">CEP: 79823380</Text>
+              <Text w="50%" fontSize="30px">Bairro: {currentImmobile?.district}</Text>
+              <Text w="50%" fontSize="30px">CEP: {currentImmobile?.cep}</Text>
             </HStack>
           </VStack>
-          <Flex w="100%" pt="8">
-            <Button bgColor="#03292A" textColor="white" fontSize="25px" w="230px" h="60px" >
+          <Flex w="100%" pt="16">
+            <Button onClick={openMap} bgColor="#03292A" textColor="white" fontSize="25px" w="50%" h="60px" >
               Como chegar
             </Button>
-            <Button bgColor="#03292A" textColor="white" fontSize="25px" w="230px" h="60px" ml="12">
+            <Button onClick={sendWhats} bgColor="#03292A" textColor="white" fontSize="25px" w="50%" h="60px" ml="12">
               Contato
             </Button>
           </Flex>

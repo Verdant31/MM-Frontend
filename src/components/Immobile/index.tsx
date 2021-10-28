@@ -84,131 +84,131 @@ export function Immobile({ immobile }: ImmobileProps) {
     <Box mr="8">
       <HStack spacing="12">
         <Stack w="45%">
-          <FormLabel color="#03292A">Tipo (Atual = {immobile.type})</FormLabel>
+          <FormLabel color="#00293A">Tipo (Atual = {immobile.type})</FormLabel>
           <Input
             onChange={event => setType(event.target.value)}
             placeholder="Tipo do imóvel"
             name="type"
             type="text"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
         <Stack w="45%">
-          <FormLabel color="#03292A">Preço (Atual = {immobile.price?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })})</FormLabel>
+          <FormLabel color="#00293A">Preço (Atual = {immobile.price?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })})</FormLabel>
           <Input
             onChange={event => setPrice(Number(event.target.value))}
             placeholder="Preço do imóvel"
             name="price"
             type="number"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
       </HStack>
       <HStack spacing="12" mt="6">
         <Stack w="45%">
-          <FormLabel color="#03292A">Tamanho (Atual = {immobile.size} m²)</FormLabel>
+          <FormLabel color="#00293A">Tamanho (Atual = {immobile.size} m²)</FormLabel>
           <Input
             onChange={event => setSize(Number(event.target.value))}
             placeholder="Tamanho do terreno"
             name="Size"
             type="number"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
         <Stack w="45%">
-          <FormLabel color="#03292A">Banheiros (Atual = {immobile.bathrooms})</FormLabel>
+          <FormLabel color="#00293A">Banheiros (Atual = {immobile.bathrooms})</FormLabel>
           <Input
             onChange={event => setBathrooms(Number(event.target.value))}
             placeholder="Quantidade de banheiros"
             name="Bathrooms"
             type="number"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
       </HStack>
       <HStack spacing="12" mt="6">
         <Stack w="45%">
-          <FormLabel color="#03292A">Quartos (Atual = {immobile.rooms})</FormLabel>
+          <FormLabel color="#00293A">Quartos (Atual = {immobile.rooms})</FormLabel>
           <Input
             onChange={event => setRooms(Number(event.target.value))}
             placeholder="Quantidade de quartos"
             name="Rooms"
             type="number"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
         <Stack w="45%">
-          <FormLabel color="#03292A">Suites (Atual = {immobile.suites})</FormLabel>
+          <FormLabel color="#00293A">Suites (Atual = {immobile.suites})</FormLabel>
           <Input
             onChange={event => setSuites(Number(event.target.value))}
             placeholder="Quantidade de suites"
             name="Suites"
             type=""
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
       </HStack>
 
       <HStack spacing="12" mt="6">
         <Stack w="45%">
-          <FormLabel color="#03292A">Vagas (Atual = {immobile.slots})</FormLabel>
+          <FormLabel color="#00293A">Vagas (Atual = {immobile.slots})</FormLabel>
           <Input
             onChange={event => setSlots(Number(event.target.value))}
             placeholder="Quantidade de vagas"
             name="Vagas"
             type="number"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
         <Stack w="45%">
-          <FormLabel color="#03292A">Rua (Atual = {immobile.street})</FormLabel>
+          <FormLabel color="#00293A">Rua (Atual = {immobile.street})</FormLabel>
           <Input
             onChange={event => setStreet(event.target.value)}
             placeholder="Endereço da rua"
             type="text"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
       </HStack>
       <HStack spacing="12" mt="6">
         <Stack w="45%">
-          <FormLabel color="#03292A">Bairro (Atual = {immobile.district})</FormLabel>
+          <FormLabel color="#00293A">Bairro (Atual = {immobile.district})</FormLabel>
           <Input
             onChange={event => setDistrict(event.target.value)}
             placeholder="Bairro"
             type="text"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
         <Stack w="45%">
-          <FormLabel color="#03292A">CEP (Atual = {immobile.cep})</FormLabel>
+          <FormLabel color="#00293A">CEP (Atual = {immobile.cep})</FormLabel>
           <Input
             onChange={event => setCep(Number(event.target.value))}
             placeholder="CEP"
             type="number"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
       </HStack>
       <HStack spacing="12" mt="6">
         <Stack w="45%">
-          <FormLabel color="#03292A">Cidade (Atual = {immobile.city})</FormLabel>
+          <FormLabel color="#00293A">Cidade (Atual = {immobile.city})</FormLabel>
           <Input
             onChange={event => setCity(event.target.value)}
             placeholder="Cidade"
             type="text"
-            textColor="#03292A"
-            borderColor="#03292A"
+            textColor="#00293A"
+            borderColor="#00293A"
           />
         </Stack>
         <Stack w="45%">

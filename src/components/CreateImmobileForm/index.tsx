@@ -65,7 +65,7 @@ export function CreateImmobileForm() {
     <>
       <HStack spacing="12">
         <Stack w="40%">
-          <FormLabel color="#03292A">Tipo</FormLabel>
+          <FormLabel color="#00293">Tipo</FormLabel>
           <Input
             onChange={event => setType(event.target.value)}
             placeholder="Tipo do imóvel"
@@ -75,7 +75,7 @@ export function CreateImmobileForm() {
           />
         </Stack>
         <Stack w="40%">
-          <FormLabel color="#03292A">Preço</FormLabel>
+          <FormLabel color="#00293">Preço</FormLabel>
           <Input
             onChange={event => setPrice(Number(event.target.value))}
             placeholder="Preço do imóvel"

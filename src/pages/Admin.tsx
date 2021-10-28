@@ -11,6 +11,9 @@ import { api } from '../services/api';
 //Components
 import { Immobile as Imovel } from '../components/Immobile';
 import { CreateImmobileForm } from '../components/CreateImmobileForm';
+import { useAuth } from '../hooks/useAuth';
+import { AiOutlineSortDescending } from 'react-icons/ai';
+import { useHistory } from 'react-router';
 
 
 type Immobile = {
@@ -31,7 +34,13 @@ type Immobile = {
 
 
 export function Admin() {
+  const history = useHistory();
+  const { user } = useAuth();
   const [immobiles, setImmobiles] = useState<Immobile>([]);
+  if (!user) {
+    history.push('/');
+  }
+
   const { isLoading, isError } =
     useInfiniteQuery(
       'imóveis',

@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import { firebase } from '../services/firebase';
+import { useHistory } from 'react-router';
+import { firebase, auth } from '../services/firebase';
 
 type User = {
   id: string,
@@ -18,12 +19,6 @@ export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthContextProvider(props: AuthContextProviderProps) {
   const [user, setUser] = useState<User>();
-
-  useEffect(() => {
-
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   async function signIn(email: string, password: string) {
     let error = false;

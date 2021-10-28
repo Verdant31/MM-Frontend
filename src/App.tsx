@@ -17,7 +17,7 @@ import { Properties } from './pages/Properties';
 import { Admin } from './pages/Admin';
 import { Login } from './pages/Login';
 import { AuthContextProvider } from './contexts/AuthContext';
-import { SeeImmobile } from './pages/SeeImmobile';
+import { SeeImmobile } from './pages/CurrentImmobile';
 
 function App() {
   const queryClient = new QueryClient();
@@ -30,7 +30,7 @@ function App() {
             <Route path="/imoveis" component={Properties} />
             <Route path="/admin" component={Admin} />
             <Route path="/login" component={Login} />
-            <Route path="/seeimmobile/:id" component={SeeImmobile} />
+            <Route path="/verimovel/:id" component={SeeImmobile} />
           </QueryClientProvider>
         </AuthContextProvider>
       </BrowserRouter>

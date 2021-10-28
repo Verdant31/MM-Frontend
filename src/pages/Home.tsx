@@ -1,4 +1,5 @@
 import { FirstSection } from '../components/FirstSection';
+import { Footer } from '../components/FooterComponents/Footer';
 import { Header } from '../components/Header';
 import { Properties } from '../components/Properties';
 import { SecondSection } from '../components/SecondSection';
@@ -10,6 +11,7 @@ export function Home() {
       <FirstSection />
       <SecondSection />
       <Properties />
+      <Footer />
     </>
   )
 }
