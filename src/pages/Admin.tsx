@@ -67,7 +67,6 @@ export function Admin() {
       }
     );
 
-  console.log(isLoading, isError);
 
 
 

@@ -9,28 +9,17 @@ import { Flex, Box, Text } from '@chakra-ui/react';
 
 //React
 import { useState } from 'react';
-import { useInfiniteQuery } from 'react-query';
 
 //Services
-import { api } from '../services/api';
 import { Filter } from '../components/Filter';
 import { Pagination } from '../components/Pagination';
-
-
-type Immobile = {
-  id: string;
-  image: string;
-  type: string;
-  price: number;
-  size: number;
-  toilets: number;
-  suites: number;
-  rooms: number;
-  slots: number;
-}[];
+import { useImmobiles } from '../hooks/useImmobiles';
 
 export function Properties() {
-  const [immobiles, setImmobiles] = useState<Immobile>([]);
+  const [page, setPage] = useState(1);
+  const { data, isLoading, isError } = useImmobiles(page);
+
+
   const [immobileUrl, setImmobileUrl] = useState('');
   const [price, setPrice] = useState(2000000);
   const [size, setSize] = useState(1000);
@@ -38,6 +27,8 @@ export function Properties() {
   const [rooms, setRooms] = useState(0);
   const [suites, setSuites] = useState(0);
   const [slots, setSlots] = useState(0);
+
+
 
   async function sendWhats(id: string) {
     await setImmobileUrl(`${process.env.REACT_APP_URL}/verimovel/${id}`)
@@ -66,57 +57,35 @@ export function Properties() {
     setPrice(price);
   }
 
-  const { isLoading, isError } =
-    useInfiniteQuery(
-      'imóveis',
-      async () => {
-        await api.get('getproducts').then((response: any) => {
-          const data = response.data;
-          const newData = Object.keys(data).map(key => ({
-            id: key,
-            image: data[key].fotosDoTerreno[0],
-            type: data[key].tipo,
-            price: data[key].preco,
-            size: data[key].tamanho,
-            toilets: data[key].banheiros,
-            rooms: data[key].quartos,
-            suites: data[key].suites,
-            slots: data[key].vagas
-          }))
-          setImmobiles(newData);
-        })
-      }
-    );
 
-  const serializedImmobiles = immobiles
-    .filter((val) => {
-      if (val.price <= price) {
-        return val;
-      }
-    }).filter((val) => {
-      if (val.size <= size) {
-        return val;
-      }
-    }).filter((val) => {
-      if (val.rooms >= rooms) {
-        return val;
-      }
-    }).filter((val) => {
-      if (val.toilets >= toilets) {
-        return val;
-      }
-    }).filter((val) => {
-      if (val.suites >= suites) {
-        return val;
-      }
-    }).filter((val) => {
-      if (val.slots >= slots) {
-        return val;
-      }
-    })
+  const serializedImmobiles = data?.immobiles.filter((val) => {
+    if (val.price <= price) {
+      return val;
+    }
+  }).filter((val) => {
+    if (val.size <= size) {
+      return val;
+    }
+  }).filter((val) => {
+    if (val.rooms >= rooms) {
+      return val;
+    }
+  }).filter((val) => {
+    if (val.toilets >= toilets) {
+      return val;
+    }
+  }).filter((val) => {
+    if (val.suites >= suites) {
+      return val;
+    }
+  }).filter((val) => {
+    if (val.slots >= slots) {
+      return val;
+    }
+  })
 
 
-  if (serializedImmobiles.length === 0 && isLoading === false) {
+  if (data?.immobiles?.length === 0 && isLoading === false) {
     return (
       <>
         <Header />
@@ -133,13 +102,12 @@ export function Properties() {
       </>
     )
   }
-  if (isLoading === true) {
+  if (isLoading === true || !data) {
     return <Loading />
   }
   if (isError === true) {
     return <Error />
   }
-
 
   return (
     <>
@@ -150,14 +118,17 @@ export function Properties() {
         </Box>
 
         <Box w="50vw" ml="40" h="800px" my="10" >
-          {serializedImmobiles.map((immobile) => {
+          {serializedImmobiles?.map((immobile) => {
             return (
               <Box key={immobile.id}>
                 <ImmobilePreview sendWhats={sendWhats} immobile={immobile} />
               </Box>
             )
           })}
-          <Pagination immobiles={serializedImmobiles} />
+
+          <Pagination totalCountOfRegisters={data.totalCount} currentPage={page}
+            onPageChange={setPage}
+          />
         </Box>
       </Flex >
 

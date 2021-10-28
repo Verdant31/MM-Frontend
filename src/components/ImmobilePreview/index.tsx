@@ -17,7 +17,6 @@ interface ImmobilePreviewProps {
 
 export default function ImmobilePreview({ immobile, sendWhats }: ImmobilePreviewProps) {
   const history = useHistory();
-
   function handleSeeImmobile(id: string) {
     history.push(`/verimovel/${id}`)
   }
