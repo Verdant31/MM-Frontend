@@ -91,7 +91,7 @@ export function Immobiles() {
   })
 
 
-  if (serializedImmobiles?.length === 0 && isLoading === false) {
+  if (serializedImmobiles?.length === 0 || isLoading === false) {
     if (isMobile) {
       return (
         <>

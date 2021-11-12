@@ -114,7 +114,6 @@ export function SeeImmobile() {
   if (!currentImmobile) {
     return <Loading />
   }
-  console.log(currentImmobile.images[0])
 
   return currentImmobile?.isExclusive === '1' ? (
     <>

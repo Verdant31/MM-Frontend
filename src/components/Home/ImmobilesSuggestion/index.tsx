@@ -2,7 +2,6 @@
 import { Button, VStack, Box, Text, } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/image';
 import { useImmobiles } from '../../../services/hooks/useImmobiles';
-import { Loading } from '../../Utility/Load/Loading';
 import { useHistory } from 'react-router';
 
 
@@ -11,20 +10,24 @@ export function Properties() {
   const { data } = useImmobiles(1);
 
   if (!data) {
-    return <Loading />;
+    return (
+      <Box w="100vw" mb="40" mt="20" >
+        <Text align="center" fontSize={["15px", "25px", "35px"]}>Não há sugestão de móveis disponiveis no momento.</Text>
+      </Box>
+    )
   }
 
   const shuffled = data.immobiles.sort(() => 0.5 - Math.random());
-  console.log(shuffled);
+
 
   let selected = shuffled.slice(0, 2);
 
   function handleSeeImmobile(id: string) {
     history.push(`/verimovel/${id}`)
   }
-  console.log(selected.length)
 
-  if (selected.length <= 1) {
+
+  if (selected.length <= 1 || !data) {
     return (
       <Box w="100vw" mb="40" mt="20" >
         <Text align="center" fontSize={["15px", "25px", "35px"]}>Não há sugestão de móveis disponiveis no momento.</Text>
