@@ -36,6 +36,7 @@ export function Immobiles() {
   })
 
 
+
   async function sendWhats(id: string) {
     await setImmobileUrl(`${process.env.REACT_APP_URL}/verimovel/${id}`)
     window.open(`https://wa.me/5567999088757/?
@@ -91,7 +92,7 @@ export function Immobiles() {
   })
 
 
-  if (serializedImmobiles?.length === 0 || isLoading === false) {
+  if (serializedImmobiles?.length === 0 && isLoading === false) {
     if (isMobile) {
       return (
         <>
@@ -121,7 +122,24 @@ export function Immobiles() {
       </>
     )
   }
-  if (isLoading === true || !data) {
+  if (!data) {
+    return (
+      <>
+        <Header />
+        <Flex w="100vw" mt="20" justify="center" >
+          <Box w="40vw" h="700px">
+            <Filter price={price} size={size} setPrice={updatePrice} setSize={updateSize} setRooms={updateRooms} setSlots={updateSlots} setSuites={updateSuites} setToilets={updateToilets} />
+
+          </Box>
+
+          <Box w="50vw" ml={['0', '0', '8', '20', '20']} h="800px" my="10" >
+            <Text fontSize="30px">Não temos imóveis no momento.</Text>
+          </Box>
+        </Flex >
+      </>
+    )
+  }
+  if (isLoading === true) {
     return <Loading />
   }
   if (isError === true) {
