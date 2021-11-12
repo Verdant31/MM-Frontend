@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { Button, Text, Input, Image, FormLabel, Stack, HStack } from "@chakra-ui/react"
 
 //Services
-import { storage } from '../../services/firebase';
-import { api } from '../../services/api';
+import { storage } from '../../../services/firebase/firebase';
+import { api } from '../../../services/api/api';
 
 
 

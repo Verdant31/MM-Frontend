@@ -1,10 +1,12 @@
 /* eslint-disable array-callback-return */
 //Chakra
 import { VStack, Box, Text, Input } from '@chakra-ui/react';
-import { Slider, SliderTrack, SliderFilledTrack, SliderThumb } from '@chakra-ui/react';
 
 //React
 import NumberFormat from 'react-number-format';
+
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+import RangeSlider from 'react-bootstrap-range-slider';
 
 interface FilterProps {
   setToilets: (toilets: number) => void;
@@ -20,32 +22,25 @@ interface FilterProps {
 export function Filter({ price, size, setPrice, setSize, setRooms, setSlots, setSuites, setToilets }: FilterProps) {
   return (
     <>
-      <Box w="20vw" h="700px">
+      <Box h="700px" mr={['0', '0', '8', '8', '8']}>
         <Text align="center" fontWeight="medium" color="#00293A" fontSize="40px">Filtro</Text>
-        <Box as="form" w="400px" mt="4" mx="auto" >
+        <Box as="form" w={['200px', '200px', '200px', '350px', '400px']} mt="4" mx="auto" >
           <Text align="left" >Preço</Text>
-          <Slider onChange={(value) => setPrice(value)} min={0} max={2000000} defaultValue={2000000} step={1}>
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
-          <Text align="center">
+
+          <RangeSlider value={price} onChange={changeEvent => setPrice(Number(changeEvent.target.value))} min={0} max={10000000} tooltip="off" />
+          <Text align="center" mb="4">
             <NumberFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'R$'} />
           </Text>
 
           <Text align="left" >Tamanho</Text>
-          <Slider onChange={(value) => setSize(value)} min={0} max={1000} defaultValue={1000}>
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
-          <Text align="center">
+          <RangeSlider value={size} onChange={changeEvent => setSize(Number(changeEvent.target.value))} min={0} max={10000} tooltip="off" />
+
+
+          <Text align="center" mb="6">
             <NumberFormat value={size} displayType={'text'} thousandSeparator={true} suffix={'m²'} />
           </Text>
 
-          <VStack align="left" spacing="6">
+          <VStack textAlign="left" align="left" spacing="6">
             <Box>
               <Text>Banheiros</Text>
               <Input onChange={event => setToilets(Number(event.target.value))} mt="2" placeholder="Quantidade desejada..." />

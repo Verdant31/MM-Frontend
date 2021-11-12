@@ -13,28 +13,25 @@ import { theme } from './styles/theme';
 
 //Components
 import { Home } from './pages/Home';
-import { Properties } from './pages/Properties';
-import { Admin } from './pages/Admin';
-import { Login } from './pages/Login';
-import { AuthContextProvider } from './contexts/AuthContext';
+import { Immobiles } from './pages/Immobiles';
 import { SeeImmobile } from './pages/CurrentImmobile';
+import { HeaderProvider } from './contexts/HeaderContext';
 
 function App() {
   const queryClient = new QueryClient();
   return (
-    <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <AuthContextProvider>
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <HeaderProvider>
           <QueryClientProvider client={queryClient}>
             <Route path="/" exact component={Home} />
-            <Route path="/imoveis" component={Properties} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/login" component={Login} />
+            <Route path="/imoveis" component={Immobiles} />
             <Route path="/verimovel/:id" component={SeeImmobile} />
           </QueryClientProvider>
-        </AuthContextProvider>
-      </BrowserRouter>
-    </ChakraProvider>
+        </HeaderProvider>
+      </ChakraProvider>
+    </BrowserRouter>
+
   );
 }
 export default App;

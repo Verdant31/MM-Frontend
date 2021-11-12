@@ -1,8 +1,8 @@
-import { FirstSection } from '../components/FirstSection';
-import { Footer } from '../components/FooterComponents/Footer';
+import { FirstSection } from '../components/Home/FirstSection';
+import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { Properties } from '../components/Properties';
-import { SecondSection } from '../components/SecondSection';
+import { Properties } from '../components/Home/ImmobilesSuggestion';
+import { SecondSection } from '../components/Home/SecondSection';
 
 export function Home() {
   return (
@@ -12,6 +12,7 @@ export function Home() {
       <SecondSection />
       <Properties />
       <Footer />
+
     </>
   )
 }

@@ -6,7 +6,7 @@ import { Button, Input, FormLabel, Stack, HStack, Box } from "@chakra-ui/react"
 import { useToast } from '@chakra-ui/toast';
 
 //Services
-import { api } from '../../services/api';
+import { api } from '../../services/api/api';
 
 
 interface ImmobileProps {
@@ -59,10 +59,11 @@ export function Immobile({ immobile }: ImmobileProps) {
       duration: 3000,
       isClosable: true,
     });
+
   }
 
   async function handleEditImmobile(id: string) {
-    api.put('/updateproduct', {
+    api.put('/updateimmobile', {
       id,
       images: listImagesURL,
       type,
