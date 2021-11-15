@@ -123,6 +123,19 @@ export function Immobiles() {
     )
   }
   if (!data) {
+    if (isMobile) {
+      return (
+        <>
+          <Header />
+          <Stack direction="column" w="100%" mt="20" align="center">
+            <Filter price={price} size={size} setPrice={updatePrice} setSize={updateSize} setRooms={updateRooms} setSlots={updateSlots} setSuites={updateSuites} setToilets={updateToilets} />
+            <Box w="70%" h="500px">
+              <Text fontSize="30px">Não há imóveis cadastrados no momento.</Text>
+            </Box>
+          </Stack>
+        </>
+      )
+    }
     return (
       <>
         <Header />
@@ -133,7 +146,7 @@ export function Immobiles() {
           </Box>
 
           <Box w="50vw" ml={['0', '0', '8', '20', '20']} h="800px" my="10" >
-            <Text fontSize="30px">Não temos imóveis no momento.</Text>
+            <Text fontSize="30px">Não há imóveis cadastrados no momento.</Text>
           </Box>
         </Flex >
       </>
