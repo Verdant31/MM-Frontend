@@ -166,34 +166,39 @@ export function SeeImmobile() {
                   <Icon mt="8" h={28} w={28}><BsTextareaResize /></Icon>
                   <Text fontSize="30px">{currentImmobile?.size}m²</Text>
                 </HStack>
-                <HStack w="50%" spacing="0">
-                  <Icon mt="8" h={28} w={28}><FaToilet /></Icon>
-                  <Text fontSize="30px">{currentImmobile?.bathrooms} banheiros</Text>
-                </HStack>
-              </Stack>
-              <Stack direction="row" spacing="12">
-                <HStack w="60%" spacing="0">
-                  <Icon mt="8" h={28} w={28}><FaBed /></Icon>
-                  <Text fontSize="30px">{currentImmobile?.rooms} quartos</Text>
-                </HStack>
-                <HStack w="50%" spacing="0">
-                  <Icon mt="8" h={28} w={28}><AiFillCar /></Icon>
-                  <Text fontSize="30px">{currentImmobile?.slots} vagas</Text>
-                </HStack>
-              </Stack>
-              <Stack direction="row" spacing="12">
                 <HStack w="60%" spacing="0">
                   <Icon mt="8" h={28} w={28}><RiMoneyDollarBoxFill /></Icon>
                   <Text fontSize="30px">
                     R${new Intl.NumberFormat('id').format(currentImmobile.price)}
                   </Text>
                 </HStack>
-                <HStack w="50%" spacing="0">
-                  <Icon mt="8" h={28} w={28}><IoIosBed /></Icon>
-                  <Text fontSize="30px">{currentImmobile?.suites} suites</Text>
-                </HStack>
               </Stack>
+              {currentImmobile.type !== 'Terreno' && (
+                <>
+                  <Stack direction="row" spacing="12">
+                    <HStack w="60%" spacing="0">
+                      <Icon mt="8" h={28} w={28}><FaBed /></Icon>
+                      <Text fontSize="30px">{currentImmobile?.rooms} quartos</Text>
+                    </HStack>
+                    <HStack w="60%" spacing="0">
+                      <Icon mt="8" h={28} w={28}><AiFillCar /></Icon>
+                      <Text fontSize="30px">{currentImmobile?.slots} vagas</Text>
+                    </HStack>
+                  </Stack>
+                  <Stack direction="row" spacing="12">
 
+                    <HStack w="50%" spacing="0">
+                      <Icon mt="8" h={28} w={28}><IoIosBed /></Icon>
+                      <Text fontSize="30px">{currentImmobile?.suites} suites</Text>
+                    </HStack>
+
+                    <HStack w="50%" spacing="0">
+                      <Icon mt="8" h={28} w={28}><FaToilet /></Icon>
+                      <Text fontSize="30px">{currentImmobile?.bathrooms} banheiros</Text>
+                    </HStack>
+                  </Stack>
+                </>
+              )}
 
               <Stack direction="row" spacing="12">
                 <HStack w="60%" spacing="0">
@@ -201,7 +206,7 @@ export function SeeImmobile() {
                   <Text fontSize="30px">{currentImmobile?.type} </Text>
 
                 </HStack>
-                <HStack w="50%" spacing="0">
+                <HStack w="60%" spacing="0">
                   <Icon mt="8" h={28} w={28}><SiOnlyfans /></Icon>
                   <Text fontSize="30px">Imóvel exclusivo</Text>
                 </HStack>
@@ -225,27 +230,33 @@ export function SeeImmobile() {
                   <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.size}m²</Text>
                 </HStack>
                 <HStack w="100%" spacing="0" justify="center" >
-                  <Icon mt="8" h={28} w={28}><FaToilet /></Icon>
-                  <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.bathrooms} banheiros</Text>
-                </HStack>
-                <HStack w="100%" spacing="0" justify="center" >
-                  <Icon mt="8" h={28} w={28}><FaBed /></Icon>
-                  <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.rooms} quartos</Text>
-                </HStack>
-                <HStack w="100%" spacing="0" justify="center" >
-                  <Icon mt="8" h={28} w={28}><AiFillCar /></Icon>
-                  <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.slots} vagas</Text>
-                </HStack>
-                <HStack w="100%" spacing="0" justify="center" >
                   <Icon mt="8" h={28} w={28}><RiMoneyDollarBoxFill /></Icon>
                   <Text fontSize={["25px", "25px", "30px"]}>
                     <NumberFormat value={currentImmobile?.price} displayType={'text'} thousandSeparator={true} prefix={'R$'} />
                   </Text>
                 </HStack>
-                <HStack w="100%" spacing="0" justify="center" >
-                  <Icon mt="8" h={28} w={28}><IoIosBed /></Icon>
-                  <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.suites} suites</Text>
-                </HStack>
+
+                {currentImmobile.type !== 'Terreno' && (
+                  <>
+                    <HStack w="100%" spacing="0" justify="center" >
+                      <Icon mt="8" h={28} w={28}><FaToilet /></Icon>
+                      <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.bathrooms} banheiros</Text>
+                    </HStack>
+                    <HStack w="100%" spacing="0" justify="center" >
+                      <Icon mt="8" h={28} w={28}><FaBed /></Icon>
+                      <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.rooms} quartos</Text>
+                    </HStack>
+                    <HStack w="100%" spacing="0" justify="center" >
+                      <Icon mt="8" h={28} w={28}><AiFillCar /></Icon>
+                      <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.slots} vagas</Text>
+                    </HStack>
+                    <HStack w="100%" spacing="0" justify="center" >
+                      <Icon mt="8" h={28} w={28}><IoIosBed /></Icon>
+                      <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.suites} suites</Text>
+                    </HStack>
+                  </>
+                )}
+
                 <HStack w="100%" spacing="0" justify="center" >
                   <Icon mt="8" h={28} w={28}><BiBuildingHouse /></Icon>
                   <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.type}</Text>
@@ -328,33 +339,38 @@ export function SeeImmobile() {
                     <Icon mt="8" h={28} w={28}><BsTextareaResize /></Icon>
                     <Text fontSize="30px">{currentImmobile?.size}m²</Text>
                   </HStack>
-                  <HStack w="50%" spacing="0">
-                    <Icon mt="8" h={28} w={28}><FaToilet /></Icon>
-                    <Text fontSize="30px">{currentImmobile?.bathrooms} banheiros</Text>
-                  </HStack>
-                </Stack>
-                <Stack direction="row" spacing="12">
-                  <HStack w="60%" spacing="0">
-                    <Icon mt="8" h={28} w={28}><FaBed /></Icon>
-                    <Text fontSize="30px">{currentImmobile?.rooms} quartos</Text>
-                  </HStack>
-                  <HStack w="50%" spacing="0">
-                    <Icon mt="8" h={28} w={28}><AiFillCar /></Icon>
-                    <Text fontSize="30px">{currentImmobile?.slots} vagas</Text>
-                  </HStack>
-                </Stack>
-                <Stack direction="row" spacing="12">
                   <HStack w="60%" spacing="0">
                     <Icon mt="8" h={28} w={28}><RiMoneyDollarBoxFill /></Icon>
                     <Text fontSize="30px">
                       <NumberFormat value={currentImmobile?.price} displayType={'text'} thousandSeparator={true} prefix={'R$'} />
                     </Text>
                   </HStack>
-                  <HStack w="50%" spacing="0">
-                    <Icon mt="8" h={28} w={28}><IoIosBed /></Icon>
-                    <Text fontSize="30px">{currentImmobile?.suites} suites</Text>
-                  </HStack>
                 </Stack>
+                {currentImmobile.type !== 'Terreno' && (
+                  <>
+                    <Stack direction="row" spacing="12">
+                      <HStack w="60%" spacing="0">
+                        <Icon mt="8" h={28} w={28}><FaBed /></Icon>
+                        <Text fontSize="30px">{currentImmobile?.rooms} quartos</Text>
+                      </HStack>
+                      <HStack w="50%" spacing="0">
+                        <Icon mt="8" h={28} w={28}><AiFillCar /></Icon>
+                        <Text fontSize="30px">{currentImmobile?.slots} vagas</Text>
+                      </HStack>
+                    </Stack>
+                    <Stack direction="row" spacing="12">
+                      <HStack w="50%" spacing="0">
+                        <Icon mt="8" h={28} w={28}><FaToilet /></Icon>
+                        <Text fontSize="30px">{currentImmobile?.bathrooms} banheiros</Text>
+                      </HStack>
+
+                      <HStack w="50%" spacing="0">
+                        <Icon mt="8" h={28} w={28}><IoIosBed /></Icon>
+                        <Text fontSize="30px">{currentImmobile?.suites} suites</Text>
+                      </HStack>
+                    </Stack>
+                  </>
+                )}
                 <HStack spacing="12"  >
                   <HStack spacing="0" w="50%" mx="auto" >
                     <Icon mt="8" h={28} w={28}><BiBuildingHouse /></Icon>
@@ -392,27 +408,36 @@ export function SeeImmobile() {
                     <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.size}m²</Text>
                   </HStack>
                   <HStack w="100%" spacing="0" justify="center" >
-                    <Icon mt="8" h={28} w={28}><FaToilet /></Icon>
-                    <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.bathrooms} banheiros</Text>
-                  </HStack>
-                  <HStack w="100%" spacing="0" justify="center" >
-                    <Icon mt="8" h={28} w={28}><FaBed /></Icon>
-                    <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.rooms} quartos</Text>
-                  </HStack>
-                  <HStack w="100%" spacing="0" justify="center" >
-                    <Icon mt="8" h={28} w={28}><AiFillCar /></Icon>
-                    <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.slots} vagas</Text>
-                  </HStack>
-                  <HStack w="100%" spacing="0" justify="center" >
                     <Icon mt="8" h={28} w={28}><RiMoneyDollarBoxFill /></Icon>
                     <Text fontSize={["25px", "25px", "30px"]}>
                       <NumberFormat value={currentImmobile?.price} displayType={'text'} thousandSeparator={true} prefix={'R$'} />
                     </Text>
                   </HStack>
-                  <HStack w="100%" spacing="0" justify="center" >
-                    <Icon mt="8" h={28} w={28}><IoIosBed /></Icon>
-                    <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.suites} suites</Text>
-                  </HStack>
+
+                  {currentImmobile.type !== 'Terreno' && (
+                    <>
+                      <HStack w="100%" spacing="0" justify="center" >
+                        <Icon mt="8" h={28} w={28}><FaBed /></Icon>
+                        <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.rooms} quartos</Text>
+                      </HStack>
+                      <HStack w="100%" spacing="0" justify="center" >
+                        <Icon mt="8" h={28} w={28}><AiFillCar /></Icon>
+                        <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.slots} vagas</Text>
+                      </HStack>
+                      <HStack w="100%" spacing="0" justify="center" >
+                        <Icon mt="8" h={28} w={28}><FaToilet /></Icon>
+                        <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.bathrooms} banheiros</Text>
+                      </HStack>
+
+                      <HStack w="100%" spacing="0" justify="center" >
+                        <Icon mt="8" h={28} w={28}><IoIosBed /></Icon>
+                        <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.suites} suites</Text>
+                      </HStack>
+                    </>
+                  )}
+
+
+
                   <HStack w="100%" spacing="0" justify="center" >
                     <Icon mt="8" h={28} w={28}><BiBuildingHouse /></Icon>
                     <Text fontSize={["25px", "25px", "30px"]}>{currentImmobile?.type}</Text>

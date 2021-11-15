@@ -19,7 +19,6 @@ export function Slider({ image }: swiperProps) {
         justify="center"
         direction="column"
         bgImage={image}
-        bgSize="contain"
         bgRepeat="no-repeat"
         bgPosition="center"
       >

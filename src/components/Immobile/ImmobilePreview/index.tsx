@@ -71,7 +71,7 @@ export default function ImmobilePreview({ immobile, sendWhats }: ImmobilePreview
 
         </Stack>
         <Box display="flex">
-          <Image fit="cover" src={immobile.image} w="320px" h="225px" />
+          <Image fit="contain" src={immobile.image} w="320px" h="225px" />
         </Box>
 
       </Flex>
